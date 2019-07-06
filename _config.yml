@@ -39,10 +39,25 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace:
+
+# 代码高亮
+# https://github.com/ele828/hexo-prism-plugin
+prism_plugin:
+  mode: 'preprocess' # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: true # default false
+  custom_css:
+  
+# 搜索
+# https://github.com/wzpan/hexo-generator-search
+search:
+  path: search.xml
+  field: post
+  content: true
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
