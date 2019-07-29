@@ -2,7 +2,7 @@
 title: typora-vue-theme主题介绍
 date: 2018-09-07 09:25:00
 author: 赵奇
-img: /source/images/1.jpg
+img: /medias/featureimages/1.jpg
 top: true
 cover: true
 coverImg: /images/1.jpg
