@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 
+title: 不尽火鼠
 subtitle: 不尽火鼠
 description: 不积跬步无以至千里，不积小流无以成江海
 keywords:
@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://localhost:4000/
+url: http://101.132.151.8/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -105,4 +105,6 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: root@101.132.151.8:/var/repo/hexo_static.git
+  branch: master
