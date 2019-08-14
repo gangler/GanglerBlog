@@ -20,10 +20,10 @@ tags:
 ## 服务器环境
 
 我用的是阿里云的轻量级服务器，还买了个域名，域名备案审核就等了几天，无语。。。
-#### 1. 配置服务器SSH
+### 1. 配置服务器SSH
 在阿里云的控制台---远程连接中，配置账号密码，然后本地就可以通过SSH远程连接服务器
 我用的连接工具是Xshell
-#### 2. 安装环境
+### 2. 安装环境
 - **安装git**
 ```
 sudo apt-get install git
@@ -48,7 +48,7 @@ sudo apt-get update
 sudo apt-get install git nginx -y
 ```
 
-#### 3.创建Git仓库
+### 3.创建Git仓库
 在/var/repo/下创建名为hexo_static的裸仓库。用如下命令
 ```
 sudo mkdir /var/repo/
@@ -60,7 +60,7 @@ cd /var/repo/
 git init --bare hexo_static.git
 ```
 
-#### 4.配置Nginx托管文件目录
+### 4.配置Nginx托管文件目录
 创建/var/www/hexo目录，用于Nginx托管，修改目录所有权和权限。
 ```
 sudo mkdir -p /var/www/hexo
@@ -91,7 +91,7 @@ index index.html index.htm;
 sudo service nginx restart
 ```
 
-#### 5.创建Git钩子
+### 5.创建Git钩子
 > 不清楚钩子是什么，可以看这里：https://aotu.io/notes/2017/04/10/githooks/index.html
 
 在自动生成的 hooks 目录下创建一个新的钩子文件：
@@ -111,7 +111,7 @@ chmod +x /var/repo/hexo_static.git/hooks/post-receive
 ```
 
 ## 回到本地环境，继续配置
-#### 1.修改Hexo的默认配置
+### 1.修改Hexo的默认配置
 在站点config.yml中修改博客的地址url
 ```
 # URL
@@ -123,7 +123,7 @@ permalink: :year/:month/:day/:title/
 permalink_defaults:
 ```
 
-#### 2.通过Git部署
+### 2.通过Git部署
 先在任意位置处打开powershell, 从服务器上把hexo_static仓库克隆下来, 以此来将服务器地址添加到受信任的站点中。
 ```
 git clone root@server_ip:/var/repo/hexo_static.git
@@ -154,18 +154,3 @@ hexo d
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
-```
