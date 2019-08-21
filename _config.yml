@@ -15,7 +15,7 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://101.132.151.8/
 root: /
-permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink/
 permalink_defaults:
 
 # Directory
@@ -60,9 +60,14 @@ search:
   content: true
   
 # 中文链接转拼音
-permalink_pinyin:
-  enable: true
-  separator: '-' # default: '-'
+#permalink_pinyin:
+#  enable: true
+#  separator: '-' # default: '-'
+
+# 根据帖子标题生成静态帖子链接
+abbrlink:
+  alg: crc16  #support crc16(default) and crc32
+  rep: dec    #support dec(default) and hex
   
 # 文章字数统计插件
 wordCount:
