@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://101.132.151.8/
+url: http://buhuo996.com/
 root: /
 permalink: posts/:abbrlink/
 permalink_defaults:
