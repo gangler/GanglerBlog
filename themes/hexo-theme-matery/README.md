@@ -2,7 +2,7 @@
 
 [![HitCount](http://hits.dwyl.io/blinkfox/hexo-theme-matery.svg)](http://hits.dwyl.io/blinkfox/hexo-theme-matery) [![Gitter](https://img.shields.io/gitter/room/blinkfox/hexo-theme-matery.svg)](https://gitter.im/hexo-theme-matery/Lobby?utm_source=badge) [![GitHub issues](https://img.shields.io/github/issues/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/issues) [![GitHub license](https://img.shields.io/github/license/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/blob/master/LICENSE) [![Download](https://img.shields.io/badge/downloads-master-green.svg)](https://codeload.github.com/blinkfox/hexo-theme-matery/zip/master) [![Hexo Version](https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg)](http://hexo.io) [![GitHub forks](https://img.shields.io/github/forks/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/network) [![GitHub stars](https://img.shields.io/github/stars/blinkfox/hexo-theme-matery.svg)](https://github.com/blinkfox/hexo-theme-matery/stargazers)
 
-[🇨🇳中文说明](README_CN.md) | [DEMO](https://blinkfox.github.io/)
+[🇨🇳中文说明](README_CN.md) | [国内访问示例(http://blinkfox.com)](http://blinkfox.com) | [Github Deploy Demo(http://blinkfox.com/)](https://blinkfox.github.io)
 
 > This is a Hexo blog theme with 'Material Design' and responsive design.
 
@@ -26,7 +26,7 @@
 - Integrated [Busuanzi Statistics](http://busuanzi.ibruce.info/), `Google Analytics` and post word count statistics.
 - Support music playback and video playback on the homepage
 - Support the `emoji` emoticon and use the `markdown emoji` grammar to directly generate the corresponding emoticon.
-- Support [DaoVoice](http://www.daovoice.io/)、[Tidio](https://www.tidio.com/) online chat.
+- Support [DaoVoice](http://www.daovoice.io/), [Tidio](https://www.tidio.com/) online chat.
 
 ## Contributor
 
@@ -54,9 +54,9 @@ git clone https://github.com/blinkfox/hexo-theme-matery.git
 Modify the value of `theme` in `_config.yml` of Hexo's root folder: `theme: hexo-theme-matery`.
 
 #### Suggestions for other changes to the `_config.yml`:
- 
+
 - Please modify the value of `url` of `_config.yml` to your website's main `URL` (eg `http://xxx.github.io`).
-- Recommended modify the value of the two 'per_page` to be a multiple of `6`, such as: `12`, `18`, etc. so that the posts list can be displayed well under each screen.
+- Recommended modify the value of the two `per_page` to be a multiple of `6`, such as: `12`, `18`, etc. so that the posts list can be displayed well under each screen.
 - If you are a Chinese user, it is recommended to change the value of `language` to `zh-CN`.
 
 ### new categories page
@@ -255,9 +255,88 @@ menu:
         icon: fas fa-image
 ```
 
+### Code highlight
+
+Hexo theme uses Hexo's plugin [hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) to show the code highlight instead of its own theme.The Installation commands are as follows:
+
+```bash
+npm i -S hexo-prism-plugin
+```
+
+Then,modify the value of `highlight.enable` to `false` in `_config.yml` file of Hexo root folder, and add the configuration of `prism` plugin as follows:
+
+```yaml
+highlight:
+  enable: false
+
+prism_plugin:
+  mode: 'preprocess'    # realtime/preprocess
+  theme: 'tomorrow'
+  line_number: false    # default false
+  custom_css:
+```
+
+### Search
+
+The theme uses the Hexo plugin [hexo-generator-search](https://github.com/wzpan/hexo-generator-search) to search the content,and the Installation commands are as follows:
+
+```bash
+npm install hexo-generator-search --save
+```
+
+Add configuration of `_config.yml` file in Hexo root folder as follows：
+
+```yaml
+search:
+  path: search.xml
+  field: post
+```
+
+### Translate Chinese Link to Pinyin (Recommend)
+
+Defualt permalinks of Hexo will include Chinese if your atrticle's title is Chinese. But it's adverse to `SEO`, and `gitment` comments don't suport Chinese Link as well. We can use the [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) of Hexo plugin to generate permalinks of Chinese Pinyin when generating posts.
+
+Installation commands are as follows：
+
+```bash
+npm i hexo-permalink-pinyin --save
+```
+
+Add such configurations in `_config.yml` file of Hexo:
+
+```yaml
+permalink_pinyin:
+  enable: true
+  separator: '-' # default: '-'
+```
+
+> **Note**: [hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) can genarate non-Chinese link in addtion to this plugin.
+
+### Post word count statistics plugin (Recommend)
+
+If you want to display the post word count and reading time information in the post detail page, you can install the [hexo-wordcount](https://github.com/willin/hexo-wordcount) plugin.
+
+Installation commands are as follows：
+
+```bash
+npm i --save hexo-wordcount
+```
+
+Then just activate the following configuration items in the theme `_config.yml` file:
+
+```yaml
+postInfo:
+  date: true
+  update: false
+  wordCount: false # set true.
+  totalCount: false # set true.
+  min2read: false # set true.
+  readCount: false # set true.
+```
+
 ### Add emoji support (Optional)
 
-This theme adds support for the `emoji` emoticon, using the Hexo plugin for [hexo-filter-github-emojis] (https://npm.taobao.org/package/hexo-filter-github-emojis) to support The generation of the `emoji` expression, the corresponding `markdown emoji` syntax (`::`, for example: `:smile:`) is converted into a `emoji` expression that jumps. The installation command is as follows:
+This theme adds support for the `emoji` emoticon, using the Hexo plugin for [hexo-filter-github-emojis](https://npm.taobao.org/package/hexo-filter-github-emojis) to support the generation of the `emoji` expression, the corresponding `markdown emoji` syntax (`::`, for example: `:smile:`) is converted into a `emoji` expression that jumps. The installation command is as follows:
 
 ```bash
 npm install hexo-filter-github-emojis --save
@@ -274,89 +353,11 @@ githubEmojis:
   customEmojis:
 ```
 
-Execute `hexo clean && hexo g` to regenerate the blog file, and then  you can see the expression you wrote in the `emoji` grammar in the corresponding position in the article.
-
-
-### Code highlight
-
-Hexo theme uses Hexo's plugin[hexo-prism-plugin](https://github.com/ele828/hexo-prism-plugin) to show the code highlight instead of its own theme.The Installation commands are as follows:
-
-```bash
-npm i -S hexo-prism-plugin
-```
-
-Then,modify the value of `highlight.enable` to `false` in `_config.yml` file of Hexo root folder，and add the configuration of `prism` plugin as follows:
-
-```yaml
-highlight:
-  enable: false
-
-prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
-  theme: 'tomorrow'
-  line_number: false    # default false
-  custom_css:
-```
-
-### Search
-
-The theme uses the Hexo plugin[hexo-generator-search](https://github.com/wzpan/hexo-generator-search) to search the content,and the Installation commands are as follows:
-
-```bash
-npm install hexo-generator-search --save
-```
-
-Add configuration of `_config.yml` file in Hexo root folder as follows：
-
-```yaml
-search:
-  path: search.xml
-  field: post
-```
-
-### Translate Chinese Link to Pinyin (Optional)
-
-Defualt permalinks of Hexo will include Chinese if your atrticle's title is Chinese.But it's adverse to `SEO`,and `gitment` comments don't suport Chinese Link as well.We can use the [hexo-permalink-pinyin](https://github.com/viko16/hexo-permalink-pinyin) of Hexo plugin to generate permalinks of Chinese Pinyin  when generating posts.
-
-Installation commands are as follows：
-
-```bash
-npm i hexo-permalink-pinyin --save
-```
-
-Add such configurations in `_config.yml` file of  Hexo:
-
-```yaml
-permalink_pinyin:
-  enable: true
-  separator: '-' # default: '-'
-```
-
-> **Note*:[hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink) can genarate non-Chinese link in addtion to this plugin.
-
-### Post word count statistics plugin (Optional)
-
-If you want to display the post word count and reading time information in the post detail page, you can install the [hexo-wordcount](https://github.com/willin/hexo-wordcount) plugin.
-
-Installation commands are as follows：
-
-```bash
-npm i --save hexo-wordcount
-```
-
-Then just activate the following configuration items in the theme `_config.yml` file:
-
-```yaml
-wordCount:
-  enable: false # Set this value to true.
-  postWordCount: true
-  min2read: true
-  totalCount: true
-```
+Execute `hexo clean && hexo g` to regenerate the blog file, and then you can see the expression you wrote in the `emoji` grammar in the corresponding position in the article.
 
 ### Add RSS feed support (Optional)
 
-The theme uses the Hexo plugin[hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) to support `RSS` feed , and the Installation commands are as follows:
+The theme uses the Hexo plugin [hexo-generator-feed](https://github.com/hexojs/hexo-generator-feed) to support `RSS` feed , and the Installation commands are as follows:
 
 ```bash
 npm install hexo-generator-feed --save
@@ -402,7 +403,7 @@ In the theme `_config.yml` file, the configurations of `QQ`, `GitHub` and mailbo
 <% } %>
 ```
 
-You can search social icon such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons).There are common social icons you can reference:
+You can search social icon such as `fab fa-github` in [Font Awesome](https://fontawesome.com/icons). There are common social icons you can reference:
 
 - Facebook: `fab fa-facebook`
 - Twitter: `fab fa-twitter`
@@ -420,49 +421,37 @@ You can search social icon such as `fab fa-github` in [Font Awesome](https://fon
 
 ### Configure music player (optional)
 
-To support music playing, you must activate the file of music playing configuration and music data.
-
-First, create a new `musics.json` file in the `_data` directory (new if you don't have one) of your blog's `source` directory. The contents of the file are as follows:
-
-```json
-[{
-	"name": "五月雨变奏电音",
-	"artist": "AnimeVibe",
-	"url": "http://xxx.com/music1.mp3",
-	"cover": "http://xxx.com/music-cover1.png"
-}, {
-	"name": "Take me hand",
-	"artist": "DAISHI DANCE,Cecile Corbel",
-	"url": "/medias/music/music2.mp3",
-	"cover": "/medias/music/cover2.png"
-}, {
-	"name": "Shape of You",
-	"artist": "J.Fla",
-	"url": "http://xxx.com/music3.mp3",
-	"cover": "http://xxx.com/music-cover3.png"
-}]
-```
-
-> **Note**: The properties in the above JSON: `name`, `artist`, `url`, `cover` indicate the name of the music, the author, the music file address, and the music cover, respectively.
-
-Then, activate the configuration in the theme's `_config.yml` configuration file:
+To support music playing, you just need activate the `_config.yml` file of music playing configuration.
 
 ```yaml
-# Whether to display the musics.
+# Whether to display the musics
 music:
   enable: true
-  showTitle: false
-  title: Listen to music
-  fixed: false # enable fixed mode
-  autoplay: false # audio autoplay
+  title: 		   # non-fixed mode works
+    enable: true
+    show: Listen to music
+  server: netease   # require music platform: netease, tencent, kugou, xiami, baidu
+  type: playlist    # require song, playlist, album, search, artist
+  id: 503838841     # require song id / playlist id / album id / search keyword
+  fixed: false      # enable fixed mode
+  autoplay: false   # audio atuoplay
   theme: '#42b983'
-  loop: 'all' # player loop play, values: 'all', 'one', 'none'
-  order: 'list' # player play order, values: 'list', 'random'
-  preload: 'auto' # values: 'none', 'metadata', 'auto'
-  volume: 0.7 # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
-  listFolded: false # indicate whether list should folded at first
-  listMaxHeight: # list max height
+  loop: 'all'       # player loop play, values: 'all', 'one', 'none'
+  order: 'random'   # player play order, values: 'list', 'random'
+  preload: 'auto'   # values: 'none', 'metadata', 'auto'
+  volume: 0.7       # default volume, notice that player will remember user setting, default volume will not work after user set volume themselves
+  listFolded: true  # indicate whether list should folded at first
 ```
+
+>`server` values :  `netease` (NetEase  cloud music) , `tencent` (QQMusic) , `kugou` (KuGouMusic) , `xiami` 
+>
+>(XiamMusic) , `baidu` (BaiduMusic)
+>
+>`type` values : `song`  ,   `playlist` , `album` , `search` , `artist` 
+>
+>For example to get the `id`:open NetEase cloud music in the browser , click the playlist of my love , there will a string of 
+>
+>numbers ,  the `playlist`\`s `id` just is the number.
 
 ## Post Front-matter
 
@@ -485,7 +474,8 @@ Everything in the Front-matter option is **not required**. But I still recommend
 | summary    | null                        | Post summary, custom post summary content, if the attribute has a value, the post card summary will display the text, otherwise the program will automatically intercept part of the article as a summary |
 | categories | null                        | Article classification, the classification of this topic represents a macroscopically large classification, only one article is recommended for one classification. |
 | tags       | null                        | Post label, a post can have multiple labels |
-| reprintPolicy       | cc_by                        | Post reprint policy, value could be one of cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint and pay |
+| keywords   | Post Title                  | Post key Words With SEO                               |
+| reprintPolicy       | cc_by              | Post reprint policy, value could be one of cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint and pay |
 
 > **Note**: 
 > 1. post's featured piature will take remainder if not writing the `img` property,and chose the featured picture of theme to let all of post's picture **have their own characteristics**.
@@ -596,6 +586,42 @@ There are 24 featured pictures in `/source/medias/featureimages`,you can add or 
 
 ## Changelog
 
+- v1.3.0
+  - new supporting subdirectory deployment（eg: `Gitee`）；
+  - new `MiniValine` comment system；
+  - new `jsdelivr` supported；
+  - Fixed many bugs；
+- v1.2.2
+  - Add the function of customizing post `keywords`;
+  - Add the function and configuration of static ribbon click switch;
+  - Set the word count, ribbon and site running time as `false` by default;
+  - Modify the meta attribute of the post's `description` to read the post's `summary` attribute first;
+  - Modified HTML tag of article title from `div` to` h1` title;
+  - Fixed the problem of incorrect footer `year` display;
+  - Removed redundant `setTimeout` js code from site runtime;
+- v1.2.1
+  - Added TOC's expand directory level settings and scroll bar function to prevent directory overflow when there are many directories;
+  - Modified the display mode of the homepage to the previous mode;
+  - Fixed the problem that the home button has no border;
+  - Fixed an issue where the homepage card was still generated when the music and bottom suction modes, videos, recommended articles, etc. were not activated;
+  - Fixed the problem that wordCount plugin is not installed, and modified some configurations;
+  - Fixed the issue that the page does not display music when there are single quotes in the JSON configuration of the music;
+  - Fixed the problem of tag cloud link failure under Hexo4.0;
+- v1.2.0
+  - Added online chat function of [DaoVoice](http://www.daovoice.io/) and [Tidio](https://www.tidio.com/);
+  - Added the ability to have two levels of menus;
+  - Added a subtitle for typing effects;
+  - Added the ability to preload web content;
+  - Added the configuration function of the home banner whether to switch daily;
+  - Added the ability to display ICP filing information, which is not enabled by default;
+  - Added configuration for Baidu analysis;
+  - Added language display, one-click copy, display line number and other functions of the code block;
+  - Added the ability to customize the configuration of the home page car map and recommended articles;
+  - Added article page to display update date;
+  - Added an icon for the reload rule;
+  - Modified the layout and display of the sharing;
+  - Upgraded and updated versions of some dependent libraries;
+  - other details to modify and optimize;
 - v1.1.0
   - Added support for `emoji`;
   - Added site run time statistics and configuration;
